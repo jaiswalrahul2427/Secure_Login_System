@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 
 function Profile() {
@@ -19,6 +19,10 @@ function Profile() {
       ...form,
       [e.target.name]: e.target.value
     });
+  };
+
+  const openForgotPassword = () => {
+    window.open("/forgot-password", "_blank");
   };
 
   const handleSubmit = async (e) => {
@@ -86,7 +90,7 @@ function Profile() {
       {message && <p>{message}</p>}
 
       <br />
-      <button onClick={() => navigate("/forgot-password")}>
+      <button link="/forgot-password" onClick={openForgotPassword}>
         Forgot Password
       </button>
     </div>
